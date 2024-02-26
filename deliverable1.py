@@ -81,8 +81,8 @@ if __name__ == "__main__":
         for y in ys: 
             y = y.detach().numpy()
             y_norm = l2_norm(y)
-        
             all_y.append(y_norm)
+        
         plt.subplot(len(logs), 1,i+1)
         plt.plot(all_y)
         plt.xlabel("t")
@@ -114,9 +114,11 @@ if __name__ == "__main__":
             y_norm = l2_norm(y)
         
             all_y.append(y_norm)
+        all_y = np.array(all_y)
         plt.subplot(len(logs), 1,i+1)
-        plt.plot(all_y[0], label="[1,1]")
-        plt.plot(all_y[1], label="[1,-1]")
+        
+        plt.plot(all_y[:, 0], label="[1,1]")
+        plt.plot(all_y[:, 1], label="[1,-1]")
         plt.xlabel("t")
         plt.ylabel("$||y_t||_2$")
         plt.title(mode)
