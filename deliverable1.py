@@ -54,7 +54,9 @@ if __name__ == "__main__":
     def l2_norm(x):
         return np.sqrt(x[:,0]**2+x[:,1]**2)
     
+    ## Normal distribution 
     normal = Normal(torch.Tensor([0.0]), torch.Tensor([1.0])) # standard normal distribution
+    ## Sampling 
     # since we dont need to track back propagate, simply random sampling w/ sample
     # for tracking backpropagation, use rsample instead
     vectors = normal.sample((10,2)).squeeze(-1)
@@ -84,7 +86,7 @@ if __name__ == "__main__":
         plt.subplot(len(logs), 1,i+1)
         plt.plot(all_y)
         plt.xlabel("t")
-        plt.ylabel("||y_t||_2")
+        plt.ylabel("$||y_t||_2$")
         plt.title(mode)
         plt.grid(True)
     
@@ -116,7 +118,7 @@ if __name__ == "__main__":
         plt.plot(all_y[0], label="[1,1]")
         plt.plot(all_y[1], label="[1,-1]")
         plt.xlabel("t")
-        plt.ylabel("||y_t||_2")
+        plt.ylabel("$||y_t||_2$")
         plt.title(mode)
         plt.legend(loc = "upper left")
         plt.grid(True)
