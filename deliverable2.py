@@ -19,8 +19,9 @@ def bleu_score(predicted: List[int], target: List[int], N: int) -> float:
         count = 0 
         left, right = 0, n
         # sliding window
-        while right < len(y):
+        while right <= len(y):
             if g == tuple(y[left:right]):
+
                 count += 1
             left += 1
             right += 1
@@ -38,7 +39,7 @@ def bleu_score(predicted: List[int], target: List[int], N: int) -> float:
                 Cs.append(min(C(predicted, pred_gram), C(target, pred_gram))) # calculate C of each gram
                 grams.add(pred_gram) # check if gram is already there
             
-            
+        
         numerator = np.sum(Cs) # TODO numerator of clipped precision
         denominator = len(predicted) - n + 1 # TODO denominator of clipped precision
 
